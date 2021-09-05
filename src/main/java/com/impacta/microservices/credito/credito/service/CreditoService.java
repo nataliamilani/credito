@@ -2,6 +2,8 @@ package com.impacta.microservices.credito.credito.service;
 
 import com.impacta.microservices.credito.credito.domain.Credito;
 import com.impacta.microservices.credito.credito.repository.CreditoRepository;
+
+//import com.impacta.microservices.credito.credito.repository.CreditoRepository;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -25,7 +27,7 @@ public class CreditoService {
         for (int i = 0; i < numberOfCredit; i++) {
             BigDecimal randomValue = minValue.add(new BigDecimal(Math.random()).multiply(maxValue.subtract(minValue))).setScale(1, BigDecimal.ROUND_HALF_UP);
             Random randomValueInt = new Random();
-            Credito credito = new Credito(randomValue, randomValueInt.nextInt(10));
+            Credito credito = new Credito(randomValueInt.nextInt(10), randomValue);
             creditoList.add(credito);
             repository.save(credito);
         }
