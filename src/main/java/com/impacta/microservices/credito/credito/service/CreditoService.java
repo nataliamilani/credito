@@ -1,21 +1,22 @@
 package com.impacta.microservices.credito.credito.service;
 
-import com.impacta.microservices.credito.credito.domain.Credito;
-import com.impacta.microservices.credito.credito.repository.CreditoRepository;
+//import com.impacta.microservices.credito.credito.domain.Credito;
+//import com.impacta.microservices.credito.credito.repository.CreditoRepository;
 
 //import com.impacta.microservices.credito.credito.repository.CreditoRepository;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+//import java.math.BigDecimal;
+//import java.math.BigInteger;
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.Random;
 
 
 @Component
 public class CreditoService {
 
+    /*
     private  CreditoRepository repository;
     private static final BigDecimal minValue = new BigDecimal(BigInteger.ONE);
     private static final BigDecimal maxValue = new BigDecimal(BigInteger.TEN);
@@ -34,5 +35,6 @@ public class CreditoService {
         System.out.println("creditoList: " + creditoList);
         return creditoList;
     }
+    */
 }
 

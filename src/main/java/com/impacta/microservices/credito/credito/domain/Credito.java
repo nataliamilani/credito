@@ -17,39 +17,43 @@ public class Credito implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer id;
+    private Integer id_transacao;
    
     private Integer contaId;
 
-    private BigDecimal credito;
+    private BigDecimal valor_credito;
 
     public Credito() {
         super();
     }
 
-    public Credito(Integer contaId, BigDecimal credito){
+    public Credito(Integer contaId, BigDecimal valor_credito){
         this.contaId = contaId;
-        this.credito = credito;
-        
+        this.valor_credito = valor_credito;
     }
 
-    public Integer getId() {
-        return this.id;
+    public Integer getId_transacao() {
+        return this.id_transacao;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId_transacao(Integer id_transacao) {
+        this.id_transacao = id_transacao;
     }
 
-    public BigDecimal getCredito() {
-        return credito;
+    public Integer getContaId() {
+        return this.contaId;
     }
-
-    public void setCredito(BigDecimal credito) {
-        this.credito = credito;
-    }
-    public Integer getContaId() {return contaId;}
 
     public void setContaId(Integer contaId) {
-        this.contaId = contaId;}
+        this.contaId = contaId;
+    }
+
+    public BigDecimal getValor_credito() {
+        return this.valor_credito;
+    }
+
+    public void setValor_credito(BigDecimal valor_credito) {
+        this.valor_credito = valor_credito;
+    }
+
 }
