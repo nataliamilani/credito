@@ -55,5 +55,4 @@ public class Credito implements Serializable {
     public void setValor_credito(BigDecimal valor_credito) {
         this.valor_credito = valor_credito;
     }
-
 }

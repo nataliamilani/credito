@@ -5,12 +5,6 @@ import com.impacta.microservices.credito.credito.domain.Credito;
 
 import org.springframework.data.repository.CrudRepository;
 
-/*
-public interface CreditoRepository extends JpaRepository<Credito, Long>{
-
-}
-*/
-
 public interface CreditoRepository extends CrudRepository<Credito, Integer>{
-    
+
 }
