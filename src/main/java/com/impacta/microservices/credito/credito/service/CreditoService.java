@@ -1,40 +1,56 @@
 package com.impacta.microservices.credito.credito.service;
 
-//import com.impacta.microservices.credito.credito.domain.Credito;
-//import com.impacta.microservices.credito.credito.repository.CreditoRepository;
+import java.util.List;
 
-//import com.impacta.microservices.credito.credito.repository.CreditoRepository;
+import com.impacta.microservices.credito.credito.domain.Credito;
+import com.impacta.microservices.credito.credito.repository.CreditoRepository;
+
 import org.springframework.stereotype.Component;
-
-//import java.math.BigDecimal;
-//import java.math.BigInteger;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Random;
 
 
 @Component
 public class CreditoService {
 
-    /*
-    private  CreditoRepository repository;
-    private static final BigDecimal minValue = new BigDecimal(BigInteger.ONE);
-    private static final BigDecimal maxValue = new BigDecimal(BigInteger.TEN);
+    private CreditoRepository repository;
 
-
-    public List<Credito> list() {
-        int numberOfCredit = new Random().nextInt(10) + 1;
-        List<Credito> creditoList = new ArrayList<Credito>(10);
-        for (int i = 0; i < numberOfCredit; i++) {
-            BigDecimal randomValue = minValue.add(new BigDecimal(Math.random()).multiply(maxValue.subtract(minValue))).setScale(1, BigDecimal.ROUND_HALF_UP);
-            Random randomValueInt = new Random();
-            Credito credito = new Credito(randomValueInt.nextInt(10), randomValue);
-            creditoList.add(credito);
-            repository.save(credito);
-        }
-        System.out.println("creditoList: " + creditoList);
-        return creditoList;
+    public CreditoService(CreditoRepository repository) {
+        this.repository = repository;
     }
-    */
+
+
+    public Credito criarCredito(Credito credito){
+        return repository.save(credito);
+    }
+
+
+	public List<Credito> consultaContaIdContaCorrente(Integer contaId) {
+			
+		return  repository.findByContaIdAndTipoConta(contaId, "contacorrente");
+		
+	}
+	public List<Credito> consultaContaIdInvestimento(Integer contaId) {
+			
+		return  repository.findByContaIdAndTipoConta(contaId, "investimento");
+		
+	}
+
+	public Double consultaSaldoContaId(Integer contaId) {
+		
+		return  repository.findByContaIdSaldoCredito(contaId);
+		
+	}
+
+	public Double consultaSaldoContaIdContaCorrente(Integer contaId) {
+		
+		return  repository.findBySaldoCreditoPorTipoConta(contaId, "contacorrente");
+		
+	}
+
+    public Double consultaSaldoContaIdContaInvestimento(Integer contaId) {
+		
+		return  repository.findBySaldoCreditoPorTipoConta(contaId, "investimento");
+		
+	}
+
 }
 
