@@ -1,43 +1,63 @@
 package com.impacta.microservices.credito.credito.domain;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-@Table(name = "Credito")
+@Table(name = "credito")
 public class Credito implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer id_transacao;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_transacao")
+    private Integer idTransacao;
    
+    @Column(name = "conta_id")
     private Integer contaId;
 
-    private BigDecimal valor_credito;
+    @Column(name = "valor_credito")
+    private Double valorCredito;
 
+    @Column(name = "cliente_id")
+    private Integer clienteId;
+
+    @Column(name = "tipo_conta")
+    private String tipoConta;
+
+    
     public Credito() {
         super();
     }
 
-    public Credito(Integer contaId, BigDecimal valor_credito){
+    @JsonCreator
+    public Credito( @JsonProperty("id_transacao") Integer idTransacao, 
+                    @JsonProperty("conta_id") Integer contaId, 
+                    @JsonProperty("valor_credito") Double valorCredito, 
+                    @JsonProperty("cliente_id") Integer clienteId,
+                    @JsonProperty("tipo_conta") String tipoConta)
+    {
+        this.idTransacao = idTransacao;
         this.contaId = contaId;
-        this.valor_credito = valor_credito;
+        this.valorCredito = valorCredito;
+        this.clienteId = clienteId;
+        this.tipoConta = tipoConta;
     }
 
-    public Integer getId_transacao() {
-        return this.id_transacao;
+    public Integer getIdTransacao() {
+        return this.idTransacao;
     }
 
-    public void setId_transacao(Integer id_transacao) {
-        this.id_transacao = id_transacao;
+    public void setIdTransacao(Integer idTransacao) {
+        this.idTransacao = idTransacao;
     }
 
     public Integer getContaId() {
@@ -48,11 +68,28 @@ public class Credito implements Serializable {
         this.contaId = contaId;
     }
 
-    public BigDecimal getValor_credito() {
-        return this.valor_credito;
+    public Double getValorCredito() {
+        return this.valorCredito;
     }
 
-    public void setValor_credito(BigDecimal valor_credito) {
-        this.valor_credito = valor_credito;
+    public void setValorCredito(Double valorCredito) {
+        this.valorCredito = valorCredito;
     }
+
+    public Integer getClienteId() {
+        return this.clienteId;
+    }
+
+    public void setClienteId(Integer clienteId) {
+        this.clienteId = clienteId;
+    }
+
+    public String getTipoConta() {
+        return this.tipoConta;
+    }
+
+    public void setTipoConta(String tipoConta) {
+        this.tipoConta = tipoConta;
+    }
+
 }
