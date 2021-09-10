@@ -8,7 +8,7 @@ spring:
         name: credito
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/mysql?useTimezone=true&serverTimezone=UTC
+        url: jdbc:mysql://localhost:3306/dbteste?useSSL=false&useTimezone=true&serverTimezone=UTC
         username: root
         password: teste
     jpa:
@@ -18,4 +18,4 @@ spring:
     sql:
         init:
             mode: always
-            data-locations: classpath:import.sql
+            data-locations: classpath:data.sql
