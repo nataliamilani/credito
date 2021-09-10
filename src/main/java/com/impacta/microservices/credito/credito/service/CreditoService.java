@@ -33,12 +33,13 @@ public class CreditoService {
 		return  repository.findByContaIdAndTipoConta(contaId, "investimento");
 		
 	}
-
+/*
 	public Double consultaSaldoContaId(Integer contaId) {
 		
 		return  repository.findByContaIdSaldoCredito(contaId);
 		
 	}
+*/
 
 	public Double consultaSaldoContaIdContaCorrente(Integer contaId) {
 		
