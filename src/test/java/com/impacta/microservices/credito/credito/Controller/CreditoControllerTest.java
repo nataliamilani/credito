@@ -3,8 +3,6 @@ package com.impacta.microservices.credito.credito.Controller;
 import com.impacta.microservices.credito.credito.controller.response.SaldoCreditoResponse;
 import com.impacta.microservices.credito.credito.domain.Credito;
 import com.impacta.microservices.credito.credito.service.CreditoService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
