@@ -23,10 +23,8 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @AutoConfigureTestDatabase
-*/
-
 public class CreditoControllerTest {
-/*
+
     @Autowired
     private TestRestTemplate template;
 
@@ -50,5 +48,6 @@ public class CreditoControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
-*/
+
 }
+*/
