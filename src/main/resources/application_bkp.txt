@@ -1,9 +1,0 @@
-server.port = 8081
-spring.datasource.url=jdbc:mysql://localhost:3306/mysql?useTimezone=true&serverTimezone=UTC
-spring.datasource.username=root
-spring.datasource.password=teste
-spring.jpa.hibernate.ddl-auto=update
-#sempre apresentar mensagem de erro nas exceptions
-server.error.include-message=always
-#nunca apresentar o trace de erro na exceptions
-server.error.include-stacktrace=never

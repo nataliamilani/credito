@@ -1,5 +1,7 @@
-C:\Users\natal\Git\credito\src\main\java\com\impacta\microservices\credito\credito\service\CreditoService.java
-C:\Users\natal\Git\credito\src\main\java\com\impacta\microservices\credito\credito\CreditoApplication.java
-C:\Users\natal\Git\credito\src\main\java\com\impacta\microservices\credito\credito\domain\Credito.java
-C:\Users\natal\Git\credito\src\main\java\com\impacta\microservices\credito\credito\controller\CreditoController.java
-C:\Users\natal\Git\credito\src\main\java\com\impacta\microservices\credito\credito\repository\CreditoRepository.java
+/Users/natasilva/repositories/credito/src/main/java/com/impacta/microservices/credito/credito/controller/CreditoController.java
+/Users/natasilva/repositories/credito/src/main/java/com/impacta/microservices/credito/credito/repository/CreditoRepository.java
+/Users/natasilva/repositories/credito/src/main/java/com/impacta/microservices/credito/credito/domain/Credito.java
+/Users/natasilva/repositories/credito/src/main/java/com/impacta/microservices/credito/credito/service/CreditoService.java
+/Users/natasilva/repositories/credito/src/main/java/com/impacta/microservices/credito/credito/configuration/OpenApiConfiguration.java
+/Users/natasilva/repositories/credito/src/main/java/com/impacta/microservices/credito/credito/CreditoApplication.java
+/Users/natasilva/repositories/credito/src/main/java/com/impacta/microservices/credito/credito/controller/response/SaldoCreditoResponse.java

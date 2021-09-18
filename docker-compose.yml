@@ -1,0 +1,45 @@
+version: '3.5'
+services:
+
+  credito:
+    container_name: app-credito
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - '8081:8081'
+    networks:
+      - net-driver
+      - eureka_net-driver
+    external_links:
+      - eureka:eureka
+    depends_on:
+      - db
+    links:
+      - db
+    restart: on-failure
+
+  db:
+    image: mysql
+    container_name: dbcredito
+    hostname: dbcredito
+    restart: always
+    networks:
+      - net-driver
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: creditodb
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+networks:
+  net-driver:
+    driver: bridge
+  eureka_net-driver:
+    external: true
