@@ -53,6 +53,21 @@ public class CreditoServiceTest {
     }
 
     @Test
+    public void ListarContas(){
+        final Integer contaId = 1;
+        final Double valorCredito = 20.0;
+        final Integer clienteId = 1;
+        final String tipoConta = "contacorrente";
+        final Credito credito1 = new Credito(1, contaId, valorCredito, clienteId, tipoConta);
+        final Credito credito2 = new Credito(2, contaId, valorCredito, clienteId, tipoConta);
+        final List<Credito> listaContas = List.of(credito1,credito2);
+
+        final List<Credito> result = creditoService.listarContas();
+
+        assertEquals(2, result.size());
+    }
+
+    @Test
     public void consultaContaIdContaCorrenteTest(){
         final Integer id_transacao = 1;
         final Integer contaId = 1;
