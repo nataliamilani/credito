@@ -5,19 +5,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SaldoCreditoResponse {
 
-    private Double saldoCredito;
+    private double saldoCredito;
 
     @JsonCreator
-    public SaldoCreditoResponse(@JsonProperty("saldo_credito") Double saldoCredito){
+    public SaldoCreditoResponse(@JsonProperty("saldo_credito") double saldoCredito){
         this.saldoCredito = saldoCredito;
     }
 
-    public Double getSaldoCredito() {
+    public double getSaldoCredito() {
         return saldoCredito;
     }
 
-    public void setSaldoCredito(Double saldoCredito) {
+    public void setSaldoCredito(double saldoCredito) {
         this.saldoCredito = saldoCredito;
     }
-
 }

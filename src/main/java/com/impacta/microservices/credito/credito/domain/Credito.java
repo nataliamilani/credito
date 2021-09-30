@@ -25,7 +25,7 @@ public class Credito implements Serializable {
     private Integer contaId;
 
     @Column(name = "valor_credito")
-    private Double valorCredito;
+    private double valorCredito;
 
     @Column(name = "cliente_id")
     private Integer clienteId;
@@ -41,7 +41,7 @@ public class Credito implements Serializable {
     @JsonCreator
     public Credito( @JsonProperty("id_transacao") Integer idTransacao, 
                     @JsonProperty("conta_id") Integer contaId, 
-                    @JsonProperty("valor_credito") Double valorCredito, 
+                    @JsonProperty("valor_credito") double valorCredito,
                     @JsonProperty("cliente_id") Integer clienteId,
                     @JsonProperty("tipo_conta") String tipoConta)
     {
@@ -68,11 +68,11 @@ public class Credito implements Serializable {
         this.contaId = contaId;
     }
 
-    public Double getValorCredito() {
+    public double getValorCredito() {
         return this.valorCredito;
     }
 
-    public void setValorCredito(Double valorCredito) {
+    public void setValorCredito(double valorCredito) {
         this.valorCredito = valorCredito;
     }
 
@@ -91,5 +91,4 @@ public class Credito implements Serializable {
     public void setTipoConta(String tipoConta) {
         this.tipoConta = tipoConta;
     }
-
 }

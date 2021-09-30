@@ -95,8 +95,12 @@
 			<artifactId>spring-mock-mvc</artifactId>
 			<version>4.4.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 
- </dependencies>
+	</dependencies>
 
 	<build>
 		<finalName>credito</finalName>
