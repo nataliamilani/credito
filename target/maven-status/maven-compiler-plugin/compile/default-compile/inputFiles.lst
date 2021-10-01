@@ -1,4 +1,5 @@
 /Users/nat/repositories/credito/src/main/java/com/impacta/microservices/credito/credito/domain/Credito.java
+/Users/nat/repositories/credito/src/main/java/com/impacta/microservices/credito/credito/exceptions/TipoContaNotFoundException.java
 /Users/nat/repositories/credito/src/main/java/com/impacta/microservices/credito/credito/controller/response/SaldoCreditoResponse.java
 /Users/nat/repositories/credito/src/main/java/com/impacta/microservices/credito/credito/service/CreditoService.java
 /Users/nat/repositories/credito/src/main/java/com/impacta/microservices/credito/credito/controller/CreditoController.java

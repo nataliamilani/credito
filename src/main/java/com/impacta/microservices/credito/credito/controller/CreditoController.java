@@ -50,8 +50,7 @@ public class CreditoController {
     //GET PARA CONSULTAR TRANSACOES DE CREDITO POR CONTA INVESTIMENTO
     @GetMapping(path = "/extrato/investimento/{contaId}") 
     public List<Credito> consultaExtratoContaInvestimento(@PathVariable("contaId") Integer contaId) {
-        List<Credito> extratoInvestimento = creditoService.consultaContaIdInvestimento(contaId);
-        return extratoInvestimento;
+        return creditoService.consultaContaIdInvestimento(contaId);
     }
 
     //GET PARA CONSOLIDAR OS VALORES DE CREDITO EM UMA CONTA CORRENTE

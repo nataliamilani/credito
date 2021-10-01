@@ -1,7 +1,6 @@
 package com.impacta.microservices.credito.credito.service;
 
 import java.util.List;
-import java.util.Objects;
 
 import com.impacta.microservices.credito.credito.domain.Credito;
 import com.impacta.microservices.credito.credito.exceptions.ContaIdNotFoundException;
@@ -43,7 +42,6 @@ public class CreditoService {
 		}
 		return listCredito;
 	}
-
 
 	public List<Credito> consultaContaIdInvestimento(Integer contaId) {
 
