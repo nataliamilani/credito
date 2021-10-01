@@ -33,12 +33,12 @@ public class CreditoServiceTest {
 
     @Test
     public void criarCreditoTest(){
-        final Integer id_transacao = 1;
+        final Integer idTransacao = 1;
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
         final String tipoConta = "contacorrente";
-        final Credito credito = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
+        final Credito credito = new Credito(idTransacao, contaId, valorCredito, clienteId, tipoConta);
 
         final Credito result = creditoService.criarCredito(credito);
 
@@ -87,12 +87,12 @@ public class CreditoServiceTest {
 
     @Test
     public void consultaContaIdContaCorrenteTest(){
-        final Integer id_transacao = 1;
+        final Integer idTransacao = 1;
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
         final String tipoConta = "contacorrente";
-        final Credito credito = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
+        final Credito credito = new Credito(idTransacao, contaId, valorCredito, clienteId, tipoConta);
         creditoService.criarCredito(credito);
 
         final List<Credito> result = creditoService.consultaContaIdContaCorrente(contaId);
@@ -109,12 +109,12 @@ public class CreditoServiceTest {
 
     @Test
     public void consultaContaIdInvestimentoTest(){
-        final Integer id_transacao = 1;
+        final Integer idTransacao = 1;
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
         final String tipoConta = "investimento";
-        final Credito credito = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
+        final Credito credito = new Credito(idTransacao, contaId, valorCredito, clienteId, tipoConta);
         creditoService.criarCredito(credito);
 
         final List<Credito> result = creditoService.consultaContaIdInvestimento(contaId);

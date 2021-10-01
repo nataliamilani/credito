@@ -35,12 +35,12 @@ public class CreditoControllerTest {
 
     @Test
     public void criarCreditoTest(){
-        final Integer id_transacao = 1;
+        final Integer idTransacao = 1;
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
         final String tipoConta = "contacorrente";
-        final Credito credito = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
+        final Credito credito = new Credito(idTransacao, contaId, valorCredito, clienteId, tipoConta);
 
         when(creditoService.criarCredito(credito)).thenReturn(credito);
 
@@ -52,12 +52,12 @@ public class CreditoControllerTest {
 
     @Test
     public void consultarTransacoesPorTipoTest(){
-        final Integer id_transacao = 1;
+        final Integer idTransacao = 1;
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
         final String tipoConta = "contacorrente";
-        final Credito credito = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
+        final Credito credito = new Credito(idTransacao, contaId, valorCredito, clienteId, tipoConta);
 
         when(creditoService.consultaTransacoesTipoConta(tipoConta)).thenReturn(List.of(credito));
 
@@ -88,13 +88,12 @@ public class CreditoControllerTest {
 
     @Test
     public void aoBuscarPorContaIdDoTipoContaCorrenteRetornarExtratoDaConta(){
-        final Integer id_transacao = 1;
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
         final String tipoConta = "contacorrente";
-        final Credito credito1 = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
-        final Credito credito2 = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
+        final Credito credito1 = new Credito(1, contaId, valorCredito, clienteId, tipoConta);
+        final Credito credito2 = new Credito(2, contaId, valorCredito, clienteId, tipoConta);
 
         when(creditoService.consultaContaIdContaCorrente(contaId)).thenReturn(List.of(credito1, credito2));
 
@@ -109,13 +108,12 @@ public class CreditoControllerTest {
 
     @Test
     public void aoBuscarPorContaIdDoTipoContaInvestimentoExtratoDaConta(){
-        final Integer id_transacao = 1;
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
         final String tipoConta = "investimento";
-        final Credito credito1 = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
-        final Credito credito2 = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
+        final Credito credito1 = new Credito(1, contaId, valorCredito, clienteId, tipoConta);
+        final Credito credito2 = new Credito(2, contaId, valorCredito, clienteId, tipoConta);
 
         when(creditoService.consultaContaIdInvestimento(contaId)).thenReturn(List.of(credito1, credito2));
 
@@ -130,18 +128,17 @@ public class CreditoControllerTest {
 
     @Test
     public void aoBuscarPorContaIdDoTipoInvestimentoRetornarSaldoTotalDaConta(){
-        final Integer id_transacao = 1;
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
         final String tipoConta = "investimento";
-        final SaldoCreditoResponse saldoConta = new SaldoCreditoResponse(40.0);
-        final Credito credito1 = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
-        final Credito credito2 = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
+        final double saldoConta = 40.0;
+        final Credito credito1 = new Credito(1, contaId, valorCredito, clienteId, tipoConta);
+        final Credito credito2 = new Credito(2, contaId, valorCredito, clienteId, tipoConta);
         creditoService.criarCredito(credito1);
         creditoService.criarCredito(credito2);
 
-        when(creditoService.consultaSaldoContaIdContaInvestimento(contaId)).thenReturn(saldoConta.getSaldoCredito());
+        when(creditoService.consultaSaldoContaIdContaInvestimento(contaId)).thenReturn(saldoConta);
 
         final ResponseEntity<SaldoCreditoResponse> response = template
                 .getForEntity("/credito/saldo/investimento/" + contaId, SaldoCreditoResponse.class);
@@ -153,18 +150,17 @@ public class CreditoControllerTest {
 
     @Test
     public void aoBuscarPorContaIdDoTipoContaCorrenteRetornarSaldoTotalDaConta(){
-        final Integer id_transacao = 1;
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
         final String tipoConta = "contacorrente";
-        final SaldoCreditoResponse saldoConta = new SaldoCreditoResponse(40.0);
-        final Credito credito1 = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
-        final Credito credito2 = new Credito(id_transacao, contaId, valorCredito, clienteId, tipoConta);
+        final double saldoConta = 40.0;
+        final Credito credito1 = new Credito(1, contaId, valorCredito, clienteId, tipoConta);
+        final Credito credito2 = new Credito(2, contaId, valorCredito, clienteId, tipoConta);
         creditoService.criarCredito(credito1);
         creditoService.criarCredito(credito2);
 
-        when(creditoService.consultaSaldoContaIdContaCorrente(contaId)).thenReturn(saldoConta.getSaldoCredito());
+        when(creditoService.consultaSaldoContaIdContaCorrente(contaId)).thenReturn(saldoConta);
 
         final ResponseEntity<SaldoCreditoResponse> response = template
                 .getForEntity("/credito/saldo/contacorrente/" + contaId, SaldoCreditoResponse.class);
