@@ -1,6 +1,8 @@
 package com.impacta.microservices.credito.credito.Service;
 
+import com.impacta.microservices.credito.credito.domain.TipoConta;
 import com.impacta.microservices.credito.credito.exceptions.ContaIdNotFoundException;
+import com.impacta.microservices.credito.credito.exceptions.TipoContaBadRequestException;
 import com.impacta.microservices.credito.credito.exceptions.TipoContaNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +39,7 @@ public class CreditoServiceTest {
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
-        final String tipoConta = "contacorrente";
+        final String tipoConta = TipoConta.contacorrente.toString();
         final Credito credito = new Credito(idTransacao, contaId, valorCredito, clienteId, tipoConta);
 
         final Credito result = creditoService.criarCredito(credito);
@@ -47,12 +49,17 @@ public class CreditoServiceTest {
         assertEquals(tipoConta, result.getTipoConta());
     }
 
+    @Test(expected = TipoContaBadRequestException.class)
+    public void RetornarTipoContaBadRequestExceptionQuandoTentarCadastrarTipoContaIncorreta(){
+        creditoService.criarCredito(new Credito(1, 1, 0.0, 1, "teste"));
+    }
+
     @Test
     public void ListarContas(){
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
-        final String tipoConta = "contacorrente";
+        final String tipoConta = TipoConta.contacorrente.toString();
         final Credito credito1 = new Credito(1, contaId, valorCredito, clienteId, tipoConta);
         final Credito credito2 = new Credito(2, contaId, valorCredito, clienteId, tipoConta);
         creditoService.criarCredito(credito1);
@@ -68,7 +75,7 @@ public class CreditoServiceTest {
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
-        final String tipoConta = "contacorrente";
+        final String tipoConta = TipoConta.contacorrente.toString();
         final Credito credito1 = new Credito(1, contaId, valorCredito, clienteId, tipoConta);
         final Credito credito2 = new Credito(2, contaId, valorCredito, clienteId, tipoConta);
         creditoService.criarCredito(credito1);
@@ -82,7 +89,7 @@ public class CreditoServiceTest {
 
     @Test(expected = TipoContaNotFoundException.class)
     public void RetornarTipoContaNotFoundExceptionQuandoConsultarTipoContaInexistente(){
-       creditoService.consultaTransacoesTipoConta("teste");
+        creditoService.consultaTransacoesTipoConta("teste");
     }
 
     @Test
@@ -91,7 +98,7 @@ public class CreditoServiceTest {
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
-        final String tipoConta = "contacorrente";
+        final String tipoConta = TipoConta.contacorrente.toString();
         final Credito credito = new Credito(idTransacao, contaId, valorCredito, clienteId, tipoConta);
         creditoService.criarCredito(credito);
 
@@ -113,7 +120,7 @@ public class CreditoServiceTest {
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
-        final String tipoConta = "investimento";
+        final String tipoConta = TipoConta.investimento.toString();
         final Credito credito = new Credito(idTransacao, contaId, valorCredito, clienteId, tipoConta);
         creditoService.criarCredito(credito);
 
@@ -132,10 +139,10 @@ public class CreditoServiceTest {
     @Test
     public void consultaSaldoContaIdContaCorrenteTest(){
         final Integer contaId = 1;
-        final Credito credito = new Credito(1, contaId, 200.0, 1, "contacorrente");
+        final Credito credito = new Credito(1, contaId, 200.0, 1, TipoConta.contacorrente.toString());
         creditoService.criarCredito(credito);
 
-        final Credito credito2 = new Credito(2, contaId, 300.0, 1, "contacorrente");
+        final Credito credito2 = new Credito(2, contaId, 300.0, 1, TipoConta.contacorrente.toString());
         creditoService.criarCredito(credito2);
 
         Double result = creditoService.consultaSaldoContaIdContaCorrente(contaId);
@@ -151,10 +158,10 @@ public class CreditoServiceTest {
     @Test
     public void consultaSaldoContaIdContaInvestimentoTest(){
         final Integer contaId = 1;
-        final Credito credito = new Credito(1, contaId, 300.0, 1, "investimento");
+        final Credito credito = new Credito(1, contaId, 300.0, 1, TipoConta.investimento.toString());
         creditoService.criarCredito(credito);
 
-        final Credito credito2 = new Credito(2, contaId, 300.0, 1, "investimento");
+        final Credito credito2 = new Credito(2, contaId, 300.0, 1, TipoConta.investimento.toString());
         creditoService.criarCredito(credito2);
 
         Double result = creditoService.consultaSaldoContaIdContaInvestimento(contaId);

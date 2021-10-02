@@ -2,6 +2,7 @@ package com.impacta.microservices.credito.credito.Controller;
 
 import com.impacta.microservices.credito.credito.controller.response.SaldoCreditoResponse;
 import com.impacta.microservices.credito.credito.domain.Credito;
+import com.impacta.microservices.credito.credito.domain.TipoConta;
 import com.impacta.microservices.credito.credito.service.CreditoService;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -39,7 +40,7 @@ public class CreditoControllerTest {
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
-        final String tipoConta = "contacorrente";
+        final String tipoConta = TipoConta.contacorrente.toString();
         final Credito credito = new Credito(idTransacao, contaId, valorCredito, clienteId, tipoConta);
 
         when(creditoService.criarCredito(credito)).thenReturn(credito);
@@ -56,7 +57,7 @@ public class CreditoControllerTest {
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
-        final String tipoConta = "contacorrente";
+        final String tipoConta = TipoConta.contacorrente.toString();
         final Credito credito = new Credito(idTransacao, contaId, valorCredito, clienteId, tipoConta);
 
         when(creditoService.consultaTransacoesTipoConta(tipoConta)).thenReturn(List.of(credito));
@@ -72,8 +73,8 @@ public class CreditoControllerTest {
 
     @Test
     public void listarTransacoesRealizadas(){
-        final Credito credito1 = new Credito(1, 1, 20.0, 1, "contacorrente");
-        final Credito credito2 = new Credito(2, 2, 80.0, 1, "investimento");
+        final Credito credito1 = new Credito(1, 1, 20.0, 1, TipoConta.contacorrente.toString());
+        final Credito credito2 = new Credito(2, 2, 80.0, 1, TipoConta.investimento.toString());
 
         when(creditoService.listarContas()).thenReturn(List.of(credito1, credito2));
 
@@ -91,7 +92,7 @@ public class CreditoControllerTest {
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
-        final String tipoConta = "contacorrente";
+        final String tipoConta = TipoConta.contacorrente.toString();
         final Credito credito1 = new Credito(1, contaId, valorCredito, clienteId, tipoConta);
         final Credito credito2 = new Credito(2, contaId, valorCredito, clienteId, tipoConta);
 
@@ -111,7 +112,7 @@ public class CreditoControllerTest {
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
-        final String tipoConta = "investimento";
+        final String tipoConta = TipoConta.investimento.toString();
         final Credito credito1 = new Credito(1, contaId, valorCredito, clienteId, tipoConta);
         final Credito credito2 = new Credito(2, contaId, valorCredito, clienteId, tipoConta);
 
@@ -131,7 +132,7 @@ public class CreditoControllerTest {
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
-        final String tipoConta = "investimento";
+        final String tipoConta = TipoConta.investimento.toString();
         final double saldoConta = 40.0;
         final Credito credito1 = new Credito(1, contaId, valorCredito, clienteId, tipoConta);
         final Credito credito2 = new Credito(2, contaId, valorCredito, clienteId, tipoConta);
@@ -153,7 +154,7 @@ public class CreditoControllerTest {
         final Integer contaId = 1;
         final Double valorCredito = 20.0;
         final Integer clienteId = 1;
-        final String tipoConta = "contacorrente";
+        final String tipoConta = TipoConta.contacorrente.toString();
         final double saldoConta = 40.0;
         final Credito credito1 = new Credito(1, contaId, valorCredito, clienteId, tipoConta);
         final Credito credito2 = new Credito(2, contaId, valorCredito, clienteId, tipoConta);

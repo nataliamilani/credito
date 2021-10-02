@@ -4,6 +4,7 @@ package com.impacta.microservices.credito.credito.controller;
 import java.util.List;
 import com.impacta.microservices.credito.credito.controller.response.SaldoCreditoResponse;
 import com.impacta.microservices.credito.credito.domain.Credito;
+import com.impacta.microservices.credito.credito.domain.TipoConta;
 import com.impacta.microservices.credito.credito.service.CreditoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;

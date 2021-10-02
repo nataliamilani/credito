@@ -12,7 +12,7 @@ public class CreditoTest {
         final Integer contaId = 1;
         final double valorCredito = 10.0;
         final Integer clienteId = 1;
-        final String tipoConta = "contacorrente";
+        final String tipoConta = TipoConta.contacorrente.toString();
 
         final Credito credito = new Credito(idTransacao, contaId, valorCredito, clienteId, tipoConta);
 

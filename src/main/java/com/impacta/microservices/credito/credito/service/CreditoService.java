@@ -3,7 +3,9 @@ package com.impacta.microservices.credito.credito.service;
 import java.util.List;
 
 import com.impacta.microservices.credito.credito.domain.Credito;
+import com.impacta.microservices.credito.credito.domain.TipoConta;
 import com.impacta.microservices.credito.credito.exceptions.ContaIdNotFoundException;
+import com.impacta.microservices.credito.credito.exceptions.TipoContaBadRequestException;
 import com.impacta.microservices.credito.credito.exceptions.TipoContaNotFoundException;
 import com.impacta.microservices.credito.credito.repository.CreditoRepository;
 
@@ -18,18 +20,22 @@ public class CreditoService {
     }
 
     public Credito criarCredito(Credito credito){
-        return repository.save(credito);
+
+		if(!credito.getTipoConta().equals(TipoConta.contacorrente.toString()) && !credito.getTipoConta().equals(TipoConta.investimento.toString())) {
+			throw new TipoContaBadRequestException("Tipo de conta iválido, por favor digitar contacorrente ou investimento");
+		}
+		return repository.save(credito);
     }
 
 	public List<Credito> listarContas() {return repository.listarContas();}
 
 	public List<Credito> consultaTransacoesTipoConta(String tipoConta) {
 
-		if(!tipoConta.startsWith("contacorrente") && !tipoConta.startsWith("investimento")) {
+		if(!tipoConta.equals(TipoConta.contacorrente.toString()) && !tipoConta.equals(TipoConta.investimento.toString())) {
 			throw new TipoContaNotFoundException("Tipo de conta incorreta, por favor pesquisar por tipo contacorrente ou investimento");
 		}
 
-		var contas = repository.findByTipoConta(tipoConta);
+		var contas = repository.findByTipoConta(tipoConta.toString());
 		return contas;
 	}
 
